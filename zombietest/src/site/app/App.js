@@ -1,51 +1,55 @@
+import './App.css';
 import React, { Component } from "react";
 
-const App=()=> {
-  const [coordinates, setCoordinates] = useState({
-                                   xoffset: 0,
-                                   yoffset: 0,
-                                   delta: 10,
-                                 });
+class App extends Component {
+
+  state = {
+    xoffset: 0,
+    yoffset: 0,
+    delta: 10,
+  };
 
   moveTitleToDown = () => {
-    setCoordinates(
+    this.setState(
       { yoffset: this.state.yoffset
         + this.state.delta });
   };
   moveTitleToRight = () => {
-    setCoordinates(
+    this.setState(
       { xoffset: this.state.xoffset
         + this.state.delta });
   };
   moveTitleToLeft = () => {
-    setCoordinates(
+    this.setState(
       { xoffset: this.state.xoffset
         - this.state.delta });
   };
   moveTitleToUp = () => {
-    setCoordinates(
+    this.setState(
       { yoffset: this.state.yoffset
         - this.state.delta });
   };
 
   render() {
     return (
-      <div>
-        {/* position to start*/}
+      <div className='App'>
+
+         {/* position to start*/}
         <h2
           style={{
             position: "absolute",
             left: `${this.state.xoffset}px`,
             top: `${this.state.yoffset}px`,
+            paddingLeft:`25%`
           }}
         >
-          Zombie Creatures
+          Zombie Test
         </h2>
 
         {/* as per L,R,U,D positions to move the placements */}
         <div style={{ marginTop: "80px" }}>
           <button onClick={this.moveTitleToRight}>
-            Move Start('0') position To Right
+            Move To Right
           </button>
           <button onClick={this.moveTitleToDown}>
             Move To Down
